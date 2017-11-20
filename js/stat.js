@@ -30,7 +30,7 @@ var sortArray = function (arr) {
   return arr;
 };
 
-var sortAssociatedArray = function (arr1, arr2) {
+var sortAssociatedArrays = function (arr1, arr2) {
   for (var i = 0; i < arr1.length - 1; i++) {
     var max = arr1[i];
     for (var j = i + 1; j < arr1.length; j++) {
@@ -48,12 +48,12 @@ var sortAssociatedArray = function (arr1, arr2) {
   return [arr1, arr2];
 };
 
-var transferToSeconds = function (arr) {
-  for (var i = 0; i < arr.length; i++) {
-    arr[i] = (arr[i] / 1000).toFixed(2);
-  }
-  return arr;
-};
+// var transferToSeconds = function (arr) {
+//   for (var i = 0; i < arr.length; i++) {
+//     arr[i] = (arr[i] / 1000).toFixed(2);
+//   }
+//   return arr;
+// };
 
 
 window.renderStatistics = function (ctx, names, times) {
@@ -73,21 +73,22 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.lineTo(350, 20);
   ctx.lineTo(400, 15);
   ctx.lineTo(450, 10);
-  ctx.lineTo(520, 20);
-  ctx.lineTo(510, 50);
+  ctx.lineTo(490, 20);
+  ctx.lineTo(520, 50);
+  ctx.lineTo(510, 80);
   ctx.lineTo(520, 100);
   ctx.lineTo(500, 150);
   ctx.lineTo(510, 200);
   ctx.lineTo(500, 220);
-  ctx.lineTo(520, 270);
-  ctx.lineTo(500, 280);
-  ctx.lineTo(450, 260);
+  ctx.lineTo(520, 250);
+  ctx.lineTo(480, 280);
+  ctx.lineTo(450, 275);
   ctx.lineTo(400, 280);
-  ctx.lineTo(350, 270);
+  ctx.lineTo(350, 275);
   ctx.lineTo(300, 280);
-  ctx.lineTo(250, 260);
+  ctx.lineTo(250, 275);
   ctx.lineTo(200, 280);
-  ctx.lineTo(150, 270);
+  ctx.lineTo(150, 275);
   ctx.lineTo(140, 280);
   ctx.lineTo(100, 250);
   ctx.lineTo(120, 200);
@@ -95,7 +96,6 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.lineTo(110, 100);
   ctx.lineTo(100, 50);
   ctx.closePath();
-  ctx.stroke();
   ctx.stroke();
 
   ctx.shadowBlur = 3;
@@ -114,7 +114,6 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillText('Список результатов:', 140, 55);
 
   sortAssociatedArrays(times, names);
-  transferToSeconds(times);
 
   var histoHeight = 150;
   var histoHeightRatio = histoHeight / getMaxItem(times);
@@ -136,7 +135,7 @@ window.renderStatistics = function (ctx, names, times) {
     ctx.globalAlpha = 1;
     ctx.fillStyle = 'black';
     ctx.fillText(names[i], histoX + histoSpace * i, histoY + 5);
-    ctx.fillText(times[i], histoX + histoSpace * i, histoY - times[i] * histoHeightRatio - 15);
+    ctx.fillText(Math.floor(times[i]), histoX + histoSpace * i, histoY - times[i] * histoHeightRatio - 15);
   }
 
 };
