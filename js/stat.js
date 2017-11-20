@@ -111,8 +111,33 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.font = '16px PT Mono';
   ctx.textBaseline = 'hanging';
   ctx.fillText('Ура вы победили!', 140, 35);
-  ctx.fillText('Список результатов:', 140, 60);
+  ctx.fillText('Список результатов:', 140, 55);
 
+  sortAssociatedArrays(times, names);
+  transferToSeconds(times);
+
+  var histoHeight = 150;
+  var histoHeightRatio = histoHeight / getMaxItem(times);
+  var histoWidth = 40;
+  var histoSpace = 50 + histoWidth;
+  var histoX = 140;
+  var histoY = 245;
+
+  ctx.fillStyle = 'red';
+
+  for (var i = 0; i < times.length; i++) {
+    ctx.fillStyle = 'blue';
+    if (names[i] === 'Вы') {
+      ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+    } else {
+      ctx.globalAlpha = Math.random();
+    }
+    ctx.fillRect(histoX + histoSpace * i, histoY, histoWidth, -times[i] * histoHeightRatio);
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = 'black';
+    ctx.fillText(names[i], histoX + histoSpace * i, histoY + 5);
+    ctx.fillText(times[i], histoX + histoSpace * i, histoY - times[i] * histoHeightRatio - 15);
+  }
 
 };
 
