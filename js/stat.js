@@ -4,30 +4,13 @@
 
 var getMaxItem = function (arr) {
   var max = 0;
-  var maxIndex = 0;
 
   for (var i = 0; i < arr.length; i++) {
     if (arr[i] > max) {
-      maxIndex = i;
       max = arr[i];
     }
   }
   return max;
-};
-
-var sortArray = function (arr) {
-  for (var i = 0; i < arr.length - 1; i++) {
-    var max = arr[i];
-    for (var j = i + 1; j < arr.length; j++) {
-      if (arr[j] > max) {
-        max = arr[j];
-        var buffer = arr[i];
-        arr[i] = max;
-        arr[j] = buffer;
-      }
-    }
-  }
-  return arr;
 };
 
 var sortAssociatedArrays = function (arr1, arr2) {
@@ -47,14 +30,6 @@ var sortAssociatedArrays = function (arr1, arr2) {
   }
   return [arr1, arr2];
 };
-
-// var transferToSeconds = function (arr) {
-//   for (var i = 0; i < arr.length; i++) {
-//     arr[i] = (arr[i] / 1000).toFixed(2);
-//   }
-//   return arr;
-// };
-
 
 window.renderStatistics = function (ctx, names, times) {
 
