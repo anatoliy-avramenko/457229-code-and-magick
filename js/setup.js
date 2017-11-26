@@ -35,29 +35,17 @@ var generateWizardName = function () {
 };
 
 
-// массив из четырех рандомно генерируемых волшебников-объектов
-var wizards = [
-  {
+// рандомно генерирует массив из четырех волшебников-объектов
+var wizards = [{}];
+for (var i = 0; i < 4; i++) {
+  wizards.push({
     name: generateWizardName(),
     coatColor: getRandomArrayItem(WIZARRDS_COAT_COLORS),
     eyesColor: getRandomArrayItem(WIZARDS_EYES_COLORS)
-  },
-  {
-    name: generateWizardName(),
-    coatColor: getRandomArrayItem(WIZARRDS_COAT_COLORS),
-    eyesColor: getRandomArrayItem(WIZARDS_EYES_COLORS)
-  },
-  {
-    name: generateWizardName(),
-    coatColor: getRandomArrayItem(WIZARRDS_COAT_COLORS),
-    eyesColor: getRandomArrayItem(WIZARDS_EYES_COLORS)
-  },
-  {
-    name: generateWizardName(),
-    coatColor: getRandomArrayItem(WIZARRDS_COAT_COLORS),
-    eyesColor: getRandomArrayItem(WIZARDS_EYES_COLORS)
-  }
-];
+  });
+}
+wizards.shift();
+
 
 // темплейт волшебника
 var wizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
@@ -78,8 +66,8 @@ var createWizard = function (wizard) {
 
 // записать параметры волшебника в разметку
 var fragment = document.createDocumentFragment();
-for (var i = 0; i < wizards.length; i++) {
-  fragment.appendChild(createWizard(wizards[i]));
+for (var j = 0; j < wizards.length; j++) {
+  fragment.appendChild(createWizard(wizards[j]));
 }
 wizardList.appendChild(fragment);
 
