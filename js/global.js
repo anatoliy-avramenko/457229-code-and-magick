@@ -13,7 +13,7 @@
     setup: document.querySelector('.setup'),
     setupOpen: document.querySelector('.setup-open'),
     setupClose: document.querySelector('.setup-close'),
-    setupUserName: window.global.setup.querySelector('.setup-user-name'),
+    setupUserName: document.querySelector('.setup-user-name'),
 
     // функция, генерирующая случайное число в диапазоне bottom - top
     randomizeNumber: function (bottom, top) {
@@ -22,7 +22,7 @@
 
     // возвратить рандомный array item
     getRandomArrayItem: function (array) {
-      return array[window.gloabal.randomizeNumber(0, array.length)];
+      return array[this.randomizeNumber(0, array.length)];
     }
 
   };

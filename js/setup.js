@@ -8,9 +8,6 @@
   var WIZARDS_SURNAMES = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 
 
-
-
-
   // функция, служащая параметром в методе array.sort (для рандомной сортировки)
   var randomizeSort = function () {
     return Math.random() > 0.5 ? -1 : 1;
@@ -20,8 +17,8 @@
   // случайное полное имя, где имя и фамилия находятся в случайном порядке
   var wizardFullName = [];
   var generateWizardName = function () {
-    var wizardName = getRandomArrayItem(WIZARDS_NAMES);
-    var wizardSurname = getRandomArrayItem(WIZARDS_SURNAMES);
+    var wizardName = window.global.getRandomArrayItem(WIZARDS_NAMES);
+    var wizardSurname = window.global.getRandomArrayItem(WIZARDS_SURNAMES);
     wizardFullName = [wizardName, wizardSurname];
     return wizardFullName.sort(randomizeSort()).join(' ');
   };
@@ -32,8 +29,8 @@
   for (var i = 0; i < 4; i++) {
     wizards.push({
       name: generateWizardName(),
-      coatColor: getRandomArrayItem(WIZARDS_COAT_COLORS),
-      eyesColor: getRandomArrayItem(WIZARDS_EYES_COLORS)
+      coatColor: window.global.getRandomArrayItem(window.global.WIZARDS_COAT_COLORS),
+      eyesColor: window.global.getRandomArrayItem(window.global.WIZARDS_EYES_COLORS)
     });
   }
   wizards.shift();
